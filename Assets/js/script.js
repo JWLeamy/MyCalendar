@@ -1,16 +1,18 @@
 // Wrap all code that interacts with the DOM in a call to jQuery to ensure that
-
+for (var i = 9; i < 18; i++) {
+  localStorage.setItem(("#hour-" + i.toString()),  '')
+}
 var today = dayjs();
 $('#currentDay').text(today.format('dddd, MMMM D, YYYY h:mm A'))
 // the code isn't run until the browser has finished rendering all the elements
 // in the html.
+
+
 $(function () {
 
     var liveHourID = dayjs().format('H');
 
-
     var livehourInt = parseInt(liveHourID)
-    console.log(livehourInt)
 
     for (var i = 9; i < 18; i++) {
       if (i < livehourInt) {
@@ -40,6 +42,8 @@ $(function () {
   
   
       setInterval(updateClass, 1000);
+
+      
 });
 
 // if time (after parse) is less than live time, add area of past.
