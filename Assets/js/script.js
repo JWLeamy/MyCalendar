@@ -1,7 +1,14 @@
 // Wrap all code that interacts with the DOM in a call to jQuery to ensure that
+var todoList = $('.todolist')
+var textinput = $('#textinput')
+
+
+
 for (var i = 9; i < 18; i++) {
   localStorage.setItem(("#hour-" + i.toString()),  '')
 }
+
+
 var today = dayjs();
 $('#currentDay').text(today.format('dddd, MMMM D, YYYY h:mm A'))
 // the code isn't run until the browser has finished rendering all the elements
@@ -44,6 +51,38 @@ $(function () {
       setInterval(updateClass, 1000);
 
       
+});
+
+document.addEventListener('click', function(event) {
+
+  var element = event.target;
+
+  if (element.matches("button")) {
+    var thisid = element.parentElement.getAttribute("Id");
+    var idname = ('#' + thisid)
+    console.log(idname)
+    var balhh = $(idname).children('#textinput').text()
+    localStorage.setItem((idname), JSON.stringify(balhh))
+    console.log(balhh)
+  
+  }
+})
+
+document.addEventListener('click', function(event) {
+  var element = event.target;
+
+  // TODO: Describe the functionality of the following `if` statement.
+  if (element.matches("button")) {
+    var thisid = element.parentElement.getAttribute("Id");
+    console.log(thisid)
+    var ye = element.parentElement
+    var ye2 = ye.children(textinput)
+    console.log(ye2)
+    var thistext = thisid.children('.textinput')
+    console.log(thistext)
+    localStorage.setItem(thisid, thisid[1])
+    
+  }
 });
 
 // if time (after parse) is less than live time, add area of past.
