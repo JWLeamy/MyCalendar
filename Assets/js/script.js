@@ -2,13 +2,19 @@
 var todoList = $('.todolist')
 var textinput = $('#textinput')
 
-
-
 for (var i = 9; i < 18; i++) {
-  localStorage.setItem(("#hour-" + i.toString()),  '')
+  var thisidvalue = ('#hour-' + i.toString())
+  var balhh = $(thisidvalue).children('#textinput').val()
+  console.log(balhh)
+  var texte = $(thisidvalue).children('#textinput').text()
+  console.log(texte)
+  if (localStorage.getItem(thisidvalue) !== null) {
+    var stored = JSON.parse(localStorage.getItem(thisidvalue))
+    
+    balhh = balhh + stored
+  }
+  
 }
-
-
 var today = dayjs();
 $('#currentDay').text(today.format('dddd, MMMM D, YYYY h:mm A'))
 // the code isn't run until the browser has finished rendering all the elements
@@ -58,17 +64,19 @@ document.addEventListener('click', function(event) {
   var element = event.target;
 
   if (element.matches("button")) {
+    //retrieves ID name from selected element
     var thisid = element.parentElement.getAttribute("Id");
+    //adds hashtag to use later
     var idname = ('#' + thisid)
-    console.log(idname)
-    var balhh = $(idname).children('#textinput').text()
+    //retrieves the value of the inputed text by the user (within a timeslot)
+    var balhh = $(idname).children('#textinput').val()
+    //sets local storage of that tieslot to whatever text the user added
     localStorage.setItem((idname), JSON.stringify(balhh))
-    console.log(balhh)
-  
   }
 })
 
-document.addEventListener('click', function(event) {
+
+/*document.addEventListener('click', function(event) {
   var element = event.target;
 
   // TODO: Describe the functionality of the following `if` statement.
@@ -84,7 +92,7 @@ document.addEventListener('click', function(event) {
     
   }
 });
-
+*/
 // if time (after parse) is less than live time, add area of past.
 
 // TODO: Add a listener for click events on the save button. This code should
