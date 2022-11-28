@@ -1,10 +1,50 @@
 // Wrap all code that interacts with the DOM in a call to jQuery to ensure that
+
 var today = dayjs();
 $('#currentDay').text(today.format('dddd, MMMM D, YYYY h:mm A'))
 // the code isn't run until the browser has finished rendering all the elements
 // in the html.
 $(function () {
-  // TODO: Add a listener for click events on the save button. This code should
+
+    var liveHourID = dayjs().format('H');
+
+
+    var livehourInt = parseInt(liveHourID)
+    console.log(livehourInt)
+
+    for (var i = 9; i < 18; i++) {
+      if (i < livehourInt) {
+        $("#hour-" + i.toString()).removeClass('future')
+        $("#hour-" + i.toString()).addClass('past')
+      }
+    }
+
+        function updateClass() {
+          //targets the live hour of the day
+          var liveHourID = "hour-" + dayjs().format('H');
+          // targets ID tag
+          var livePresentCard = $('#' + liveHourID);
+          //targets any card with classtag ".present"
+          var oldPresentCard = $('.present');
+          //retreives id of present card
+          var oldPresentCardID = $('.present').attr('id');
+          
+          var hourIsChanged = (oldPresentCardID !== liveHourID);
+          if (hourIsChanged) {
+            oldPresentCard.addClass('past');
+            oldPresentCard.removeClass('present');
+            livePresentCard.addClass('present');
+            livePresentCard.removeClass('future');
+          };
+        };
+  
+  
+      setInterval(updateClass, 1000);
+});
+
+// if time (after parse) is less than live time, add area of past.
+
+// TODO: Add a listener for click events on the save button. This code should
   // use the id in the containing time-block as a key to save the user input in
   // local storage. HINT: What does `this` reference in the click listener
   // function? How can DOM traversal be used to get the "hour-x" id of the
@@ -22,4 +62,23 @@ $(function () {
   // attribute of each time-block be used to do this?
   //
   // TODO: Add code to display the current date in the header of the page.
-});
+
+
+/*function Comp() {
+  var liveHourID = "hour-" + dayjs().format('H');
+  //targets any card with classtag ".present"
+  var FutureCard = $('.future');
+  //retreives id of present card
+  var FutureCardId = $('.future').attr('id');
+  
+  var ishour = (FutureCardId === liveHourID);
+  
+  if (ishour) {
+    FutureCard.addClass('present')
+    FutureCard.removeClass('future')
+  }
+}
+*/
+
+
+
