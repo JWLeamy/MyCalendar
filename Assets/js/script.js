@@ -52,7 +52,7 @@ function returnlocal () {
 
         if (localStorage.getItem(thisidvalue) !== "") {
           
-          var stored = (localStorage.getItem(thisidvalue))
+          var stored = localStorage.getItem(thisidvalue)
 
           balhh = $(thisidvalue).children('#textinput').html(stored)
 
