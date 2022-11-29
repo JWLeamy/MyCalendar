@@ -10,7 +10,8 @@ for (var i = 9; i < 18; i++) {
   var texte = $(thisidvalue).children('#textinput').text()
   console.log(texte)
   if (localStorage.getItem(thisidvalue) !== null) {
-    var stored = JSON.parse(localStorage.getItem(thisidvalue))
+    var yup = localStorage.getItem(thisidvalue)
+    var stored = JSON.parse(yup)
     balhh = $(thisidvalue).children('#textinput').html(stored)
   }
   
