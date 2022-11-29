@@ -48,13 +48,15 @@ function returnlocal () {
     
       var thisidvalue = ('#hour-' + i.toString())
 
-      var balhh = $(thisidvalue).children('#textinput').html()
+      var balhh = $(thisidvalue).children('#textinput').val()
 
-        if (localStorage.getItem(thisidvalue) !== null) {
+        if (localStorage.getItem(thisidvalue) !== "") {
           
-          var stored = JSON.parse(localStorage.getItem(thisidvalue))
+          var stored = (localStorage.getItem(thisidvalue))
 
-          $(thisidvalue).children('#textinput').html(stored)
+          balhh = $(thisidvalue).children('#textinput').html(stored)
+
+          balhh
         }
   }
 }
