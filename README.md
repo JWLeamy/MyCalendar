@@ -39,7 +39,7 @@ The following animation demonstrates the application functionality:
 
 ## Code Snippet
 
-``
+```
 function returnlocal () {
     for (var i = 9; i < 18; i++) {
     
@@ -76,4 +76,4 @@ function updateClass() {
     livePresentCard.removeClass('future');
   };
 };
-``
+```
