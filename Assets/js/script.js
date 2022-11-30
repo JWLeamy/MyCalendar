@@ -50,13 +50,12 @@ function returnlocal () {
 
       var balhh = $(thisidvalue).children('#textinput').val()
 
-        if (localStorage.getItem(thisidvalue) !== "") {
+        if (localStorage.getItem(thisidvalue) !== '') {
           
-          var stored = localStorage.getItem(thisidvalue)
+          var stored = JSON.parse(localStorage.getItem(thisidvalue))
 
-          balhh = $(thisidvalue).children('#textinput').html(stored)
+          balhh = $(thisidvalue).children('#textinput').val(stored)
 
-          balhh
         }
   }
 }
